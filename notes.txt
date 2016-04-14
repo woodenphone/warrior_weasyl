@@ -36,7 +36,9 @@ What we want to save:
         site-provided: https://www.weasyl.com/character/61364/beanie
         also accepted: https://www.weasyl.com/character/61364
         https://www.weasyl.com/character/<CHARACTER_ID>
-        download link: https://cdn.weasyl.com/static/character/4e/7a/2d/c2/35/e5/beaniee-61364.submit.41340.png
+        download link: 
+            https://cdn.weasyl.com/static/character/4e/7a/2d/c2/35/e5/beaniee-61364.submit.41340.png
+            https://cdn.weasyl.com/static/character/53/70/04/b8/27/14/ikani-58233.submit.2061.png
     
     
     Journals
@@ -76,6 +78,36 @@ What we want to save:
             https://www.weasyl.com/followed/ikani
 
 What to avoid loading:
+
+
+
+
+
+
+
+
+Thumbnails:
+    https://cdn.weasyl.com/static/media/31/3b/c4/313bc43343c0f56c821c917432954dcce56154d394a4e5519f6720c278270b7d.png
+    https://cdn.weasyl.com/static/media/45/01/b0/4501b01cdc8098f8d6fb3515c5dc430c44db23324b8b78e80a1cb88bf28c8c4b.png
+    https://cdn.weasyl.com/static/character/32/e8/a6/85/6b/0e/41503.thumb.png
+    https://cdn.weasyl.com/static/media/2f/04/51/2f045129f06373153e106cd1a5f6a38b6e8d36048859cba1b595c5caa8625190.png
+    https://cdn.weasyl.com/static/media/a4/06/15/a40615dffa8d8467f1ab4189411508090241c69f1558301820dd5b01de679fcb.png
+    https://cdn.weasyl.com/static/media/a6/29/51/a62951927697feea0045aa60dbbf645b7960b6bee9173b34e702a79499527001.png
+    https://cdn.weasyl.com/static/character/64/f8/bf/f4/31/0d/61380.thumb.png
+    https://cdn.weasyl.com/static/media/e0/29/9f/e0299f0253497cec7a5178e17592a5d38d86b3d445d39538d7d8e12fefa2e763.png
+
+
+User custom header images:
+    https://cdn.weasyl.com/static/media/82/ac/8e/82ac8eeb7dc80170bca47b2d1bb50bfb0a07871d8c0c7a34934b2e597ed8af66.png
+
+Site layout images:
+    https://cdn.weasyl.com/static/images/logo.png
+    https://www.weasyl.com/static/images/avatar_default.jpg
+    https://cdn.weasyl.com/static/images/wesley1.png
+
+
+
+
 
 
 
