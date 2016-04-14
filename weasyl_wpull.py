@@ -65,7 +65,7 @@ def accept_url(url_info, record_info, verdict, reasons):
         ('weasyl.com/submission/' in record_info['referrer']) and
         (url.endswith('?download'))
         ):
-        print('Accept submission download links')
+        print('Accept submission download links. url: %s' % (url))
         return True
 
     # Accept character download links
@@ -76,7 +76,7 @@ def accept_url(url_info, record_info, verdict, reasons):
         ('weasyl.com/character/' in record_info['referrer']) and
         ('.submit.' in url)
         ):
-        print('Accept character download links')
+        print('Accept character download links. url: %s' % (url))
         return True
 
     # Accept text submission images and thumbnails. Restrict to submission pages to try to reduce bloat
@@ -86,13 +86,13 @@ def accept_url(url_info, record_info, verdict, reasons):
         ('cdn.weasyl.com/static/media' in url) and
         ('weasyl.com/submission/' in record_info['referrer'])
         ):
-        print('Accept text submission images and thumbnails')
+        print('Accept text submission images and thumbnails. url: %s' % (url))
         return True
 
     # Accept google docs embeds
     # https://docs.google.com/document/d/1pSeP8GdGA7FMGv5sXk97NiBPkUPZwj8jNT_7MiHriWY/edit?usp=sharing
     # TODO
-    print('using defualt verdict')
+    #print('using defualt verdict. url: %s' % (url))
     return verdict
 
 

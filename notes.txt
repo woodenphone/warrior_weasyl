@@ -169,3 +169,14 @@ To prepare a new account:
     ("warrior" as key description is fine)
     Click new API key
     Copy the new key 
+
+
+
+
+
+
+Generic small ranges for quick testing
+journal:104261-104271
+submission:1242072-1242082
+character:61354-61364
+
