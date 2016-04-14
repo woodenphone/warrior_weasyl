@@ -51,6 +51,13 @@ What we want to save:
     User pages:
         May need discovery?
         https://www.weasyl.com/~hattonslayden
+        Lowest known userID:
+            https://www.weasyl.com/favorites?userid=1000
+            https://www.weasyl.com/~deishido
+        Highest known userID:
+            Just one i grabbed at random from the front page
+            https://www.weasyl.com/favorites?userid=72489&feature=submit
+            https://www.weasyl.com/~lucheek
         Collections:
             Do we care? They appear to be a single flat array of submission links
             https://www.weasyl.com/collections/keet
@@ -104,6 +111,7 @@ Site layout images:
     https://cdn.weasyl.com/static/images/logo.png
     https://www.weasyl.com/static/images/avatar_default.jpg
     https://cdn.weasyl.com/static/images/wesley1.png
+
 
 
 

@@ -21,7 +21,41 @@ wpull_hook = globals().get('wpull_hook')  # silence code checkers
 
 def accept_url(url_info, record_info, verdict, reasons):
     url = url_info['url']
-    print('processing url: %s' % (url))
+    #print('processing url: %s' % (url))
+
+    # Reject unwanted domains
+    if 'google-analytics.com' in url:
+        return False
+    if 'google.com/analytics' in url:
+        return False
+    if 'gstatic.com/analytics' in url:
+        return False
+    if 'googleadservices.com' in url:
+        return False
+    if 'googlesyndication.com/pagead/' in url:
+        return False
+    if 'googletagservices.com' in url:
+        return False
+    if '2mdn.net' in url:
+        return False
+    if 'ytimg.com' in url:
+        return False
+    if 'google.com/images' in url:
+        return False
+    if 'gstatic.com/' in url:
+        return False
+    if 'fonts.gstatic.com/' in url:
+        return False
+    if 'ajax.googleapis.com/' in url:
+        return False
+    if 'doubleclick.net/' in url:
+        return False
+
+
+    # Reject static site elements so we don't get a thousand copies of the title header image
+    # https://cdn.weasyl.com/static/images/logo.png
+    if 'https://cdn.weasyl.com/static/images/' in url:
+        return False
 
     # Accept submission download links (This includes the download links for text submissions)
     # https://cdn.weasyl.com/~hattonslayden/submissions/1241567/af1c9582c794e97a166afc1a646d222645db57bbad3cb161f95c61e5e41a59ae/hattonslayden-intergalactic-vixen-around-the-bend.jpg?download

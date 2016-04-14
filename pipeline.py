@@ -236,7 +236,31 @@ class WgetArgs(object):
             for num in nums:
                 wget_args.extend([
                     'https://www.weasyl.com/submission/{0}/'.format(num),
-                    # enable full view in profile settings
+                ])
+
+        elif item_type == 'character':
+            wget_args.remove("--wait=1")
+            wget_args.append("--wait=2")
+
+            start_num, end_num = item_value.split('-', 1)
+            nums = list(range(int(start_num), int(end_num) + 1))
+            random.shuffle(nums)
+
+            for num in nums:
+                wget_args.extend([
+                    'https://www.weasyl.com/character/{0}/'.format(num),
+                ])
+        elif item_type == 'journal':
+            wget_args.remove("--wait=1")
+            wget_args.append("--wait=2")
+
+            start_num, end_num = item_value.split('-', 1)
+            nums = list(range(int(start_num), int(end_num) + 1))
+            random.shuffle(nums)
+
+            for num in nums:
+                wget_args.extend([
+                    'https://www.weasyl.com/journal/{0}/'.format(num),
                 ])
 
         else:
