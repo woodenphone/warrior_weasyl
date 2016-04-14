@@ -1,0 +1,131 @@
+Notes for writeing warrior thing for weasyl
+
+
+What we want to save:
+    Submissions
+        Can be accessed from https://www.weasyl.com/submission/<SUBMISSION_ID>
+        ex - https://www.weasyl.com/submission/1241567
+        download link:
+            https://cdn.weasyl.com/~hattonslayden/submissions/1241567/af1c9582c794e97a166afc1a646d222645db57bbad3cb161f95c61e5e41a59ae/hattonslayden-intergalactic-vixen-around-the-bend.jpg?download
+            https://cdn.weasyl.com/~inkstain/submissions/1241891/9952c65d3e5e2e32badc906a6b42bcfc8167d7c916c3f0ae281ea69ef9b811b3/inkstain-family-fur-computer-full-version.mp3?download
+            https://cdn.weasyl.com/~archfox/submissions/1236068/22de550e6f863ad1adbb17dd3d968d236616eb28a16299995afb0ee17ba60242/archfox-partnered-with-the-bully.pdf?download
+        
+        Can be a youtube embed sometimes?
+        Can be a google docs embed
+        
+        Some text submissions lack a download link:
+            https://www.weasyl.com/submission/1221326/two-big-cats
+                https://docs.google.com/document/d/188lEgSsvNCOUQTVGQ465x8gLboOpadegeXEEjqAxDIo/pub?embedded=true
+            https://www.weasyl.com/submission/1148120/becoming-cat
+                https://cdn.weasyl.com/static/media/0d/ad/e3/0dade369fc65dc387170867f8b7c04b48cd4903457b4d094b3cb553fbf966b94.jpg
+                https://docs.google.com/document/d/1pSeP8GdGA7FMGv5sXk97NiBPkUPZwj8jNT_7MiHriWY/edit?usp=sharing
+        
+        Some text submissions have an image as well as text
+            https://www.weasyl.com/submission/1220462/the-courage-to-grow-gold-in-disguise-17
+                https://cdn.weasyl.com/static/media/85/b2/12/85b212c8332014e3531f0c4891434280f42c4b0d7237a9c1c5ed6e31d7f71ea0.png
+                https://cdn.weasyl.com/~paulshep/submissions/1220462/b3bfa9c206eaf29c9e09d5c8472837a56f1417daa07053b048c812db37db8170/paulshep-the-courage-to-grow-gold-in-disguise-17.pdf?download
+            https://www.weasyl.com/submission/1169192/dawn-of-the-werewolf-chapter-iii
+                https://cdn.weasyl.com/static/media/54/c8/5f/54c85f59b6be80714aa1b93cf69499a24ac7981b4162a66b70147fe1775aedbe.png
+                https://cdn.weasyl.com/~domnuleduard/submissions/1169192/034e8e5929e2db1444f0f119761d93358ebb96d3537a0f1ca816ee05fdb7ab85/domnuleduard-dawn-of-the-werewolf-chapter-iii.pdf?download
+            https://www.weasyl.com/submission/1199683/lippies-2016-book-1-draft
+                https://cdn.weasyl.com/static/media/37/6a/c2/376ac29cf432b843009c9bc18682fbef1db9282dbd77f4c311a598224b222807.jpg
+                https://cdn.weasyl.com/~tangenttheta/submissions/1199683/ddfaba99f29a47d53eec79a13ed9f6b9e116adac3d55d772e9b241365b55ce2d/tangenttheta-lippies-2016-book-1-draft.pdf?download
+    
+    
+    Characters
+        site-provided: https://www.weasyl.com/character/61364/beanie
+        also accepted: https://www.weasyl.com/character/61364
+        https://www.weasyl.com/character/<CHARACTER_ID>
+        download link: https://cdn.weasyl.com/static/character/4e/7a/2d/c2/35/e5/beaniee-61364.submit.41340.png
+    
+    
+    Journals
+        site-provided: https://www.weasyl.com/journal/104254/goodbye-weasyl
+        also accepted: https://www.weasyl.com/journal/104254
+        https://www.weasyl.com/journal/<JOURNAL_ID>
+        Largest known nuber of journals for a user: https://www.weasyl.com/journals/dipper (all on one page)
+
+    
+    User pages:
+        May need discovery?
+        https://www.weasyl.com/~hattonslayden
+        Collections:
+            Do we care? They appear to be a single flat array of submission links
+            https://www.weasyl.com/collections/keet
+        Submission galleries:
+            These are ?2-deep? nested arrays of submissions. i.e root-folder-subfolder-submission as deepest submission location, root-submission as shallowest submission location
+            https://www.weasyl.com/submissions/keet
+            https://www.weasyl.com/submissions/levi
+            https://www.weasyl.com/submissions/suburbanfox
+            https://www.weasyl.com/submissions/suburbanfox?nextid=662305
+            https://www.weasyl.com/submissions/suburbanfox?folderid=28359
+            https://www.weasyl.com/submissions/suburbanfox?folderid=2458
+        Shouts listing:
+            https://www.weasyl.com/shouts/keet
+        Favorites listing:
+            https://www.weasyl.com/favorites/keet
+            https://www.weasyl.com/favorites?userid=5173&feature=submit
+            https://www.weasyl.com/favorites?userid=15712&feature=submit
+            https://www.weasyl.com/favorites?userid=15712&feature=submit&nextid=1163153
+            https://www.weasyl.com/favorites?userid=15712&feature=submit&nextid=1107085
+        Friends:
+            https://www.weasyl.com/friends/ikani
+        Following:
+            https://www.weasyl.com/following/ikani
+        Followed by:
+            https://www.weasyl.com/followed/ikani
+
+What to avoid loading:
+
+
+
+There is an API:
+    "To connect to Weasyl using an API key, set the value of the X-Weasyl-API-Key HTTP header to the API key. This will override any cookie-based authentication."
+
+
+
+
+
+
+
+
+To login to Weasyl:
+    Use API key.
+    "To connect to Weasyl using an API key, set the value of the X-Weasyl-API-Key HTTP header to the API key. This will override any cookie-based authentication."
+
+
+
+
+
+
+
+
+
+
+To logout from Weasyl:
+
+
+
+
+
+finding submission download link:
+<li><a href="https://cdn.weasyl.com/~hattonslayden/submissions/1241567/af1c9582c794e97a166afc1a646d222645db57bbad3cb161f95c61e5e41a59ae/hattonslayden-intergalactic-vixen-around-the-bend.jpg?download"><span class="icon icon-20 icon-arrowDown"></span> Download</a></li>
+Just accept the url format?
+
+
+
+To prepare a new account:
+    Generate a new email account
+    Fill in login form with an age over 22
+    Open link in confirmation email
+
+    Open "Site preferences" https://www.weasyl.com/control/editpreferences
+    Set timezone to UTC+0 ?Atlantic/Reykjavik?
+    Set "Maximum Viewable Content Rating" to "Explicit"
+    Set  "Maximum Viewable Content Rating in SFW Mode" to "Explicit"
+    Click "Save"
+
+    Add an API key - https://www.weasyl.com/control/apikeys
+    ("warrior" as key description is fine)
+    Click new API key
+    Copy the new key 
