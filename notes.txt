@@ -52,6 +52,7 @@ What we want to save:
     User pages:
         May need discovery?
         https://www.weasyl.com/~hattonslayden
+        https://www.weasyl.com/user?userid=5173
         Lowest known userID:
             https://www.weasyl.com/favorites?userid=1000
             https://www.weasyl.com/~deishido
@@ -70,9 +71,17 @@ What we want to save:
             https://www.weasyl.com/submissions/suburbanfox?nextid=662305
             https://www.weasyl.com/submissions/suburbanfox?folderid=28359
             https://www.weasyl.com/submissions/suburbanfox?folderid=2458
+            https://www.weasyl.com/submissions?userid=10000
+            https://www.weasyl.com/submissions?userid=5173
+        Characters gallery:
+            https://www.weasyl.com/characters/mouthrot
+            https://www.weasyl.com/characters?userid=5556
         Shouts listing:
             https://www.weasyl.com/shouts/keet
+            https://www.weasyl.com/shouts?userid=5556
         Favorites listing:
+            Can be disabled by the user:
+                https://www.weasyl.com/favorites/amethystmare - "You cannot view this page because the owner does not allow anyone to see their favorites."
             https://www.weasyl.com/favorites/keet
             https://www.weasyl.com/favorites?userid=5173&feature=submit
             https://www.weasyl.com/favorites?userid=15712&feature=submit
@@ -80,10 +89,21 @@ What we want to save:
             https://www.weasyl.com/favorites?userid=15712&feature=submit&nextid=1107085
         Friends:
             https://www.weasyl.com/friends/ikani
+            https://www.weasyl.com/friends?userid=5556
+
         Following:
             https://www.weasyl.com/following/ikani
+            https://www.weasyl.com/following?userid=5556
+            https://www.weasyl.com/following?userid=5556&nextid=54142
+            https://www.weasyl.com/following?userid=5556&nextid=2984
         Followed by:
             https://www.weasyl.com/followed/ikani
+            https://www.weasyl.com/followed/mouthrot
+            https://www.weasyl.com/followed?userid=5556
+            https://www.weasyl.com/followed?userid=5556&nextid=6177
+        Journals listing: (Low importance)
+            https://www.weasyl.com/journals?userid=5556
+            https://www.weasyl.com/journals/mouthrot
 
 What to avoid loading:
 
@@ -115,9 +135,24 @@ Site layout images:
 
 
 
-
-
-
+Known error pages:
+    404:
+        https://www.weasyl.com/foo?userid=5173
+        "404! The page you requested could not be found."
+    Unkown user:
+        https://www.weasyl.com/favorites?userid=999
+        https://www.weasyl.com/favorites?userid=999999
+        "This user doesn't seem to be in our database"
+    Favorites access denied:
+        https://www.weasyl.com/favorites/amethystmare
+        "You cannot view this page because the owner does not allow anyone to see their favorites."
+    Unknown submission:
+        https://www.weasyl.com/submission/0
+        "This submission doesn't seem to be in our database."
+    Interesting:
+        https://www.weasyl.com/favorites?userid=5173&feature=foo
+        blank page - "internal server error"
+        Dislikes getting unexpected values to the "feature" argument?
 
 
 There is an API:

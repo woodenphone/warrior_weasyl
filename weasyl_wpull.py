@@ -44,11 +44,11 @@ def accept_url(url_info, record_info, verdict, reasons):
         return False
     if 'gstatic.com/' in url:
         return False
-    if 'fonts.gstatic.com/' in url:
+    if 'fonts.gstatic.com/' in url:# Maybe we need this?
         return False
-    if 'ajax.googleapis.com/' in url:
+    if 'ajax.googleapis.com/' in url:# Maybe we need this?
         return False
-    if 'doubleclick.net/' in url:
+    if 'doubleclick.net/' in url:# Ads
         return False
 
 
@@ -92,6 +92,90 @@ def accept_url(url_info, record_info, verdict, reasons):
     # Accept google docs embeds
     # https://docs.google.com/document/d/1pSeP8GdGA7FMGv5sXk97NiBPkUPZwj8jNT_7MiHriWY/edit?usp=sharing
     # TODO
+
+    # === USER ===
+    # Accept Submission galleries pages
+    if (
+        (not verdict) and
+        ('weasyl.com/submissions' in url) and
+        ('weasyl.com/submissions' in record_info['referrer'])
+        ):
+        print('Accept submissions gallery listing pages. url: %s' % (url))
+        return True
+
+    # Accept characters galleries pages
+    if (
+        (not verdict) and
+        ('weasyl.com/characters' in url) and
+        ('weasyl.com/characters' in record_info['referrer'])
+        ):
+        print('Accept characters gallery listing pages. url: %s' % (url))
+        return True
+
+    # Accept favorites galleries pages
+    if (
+        (not verdict) and
+        ('weasyl.com/favorites' in url) and
+        ('weasyl.com/favorites' in record_info['referrer'])
+        ):
+        print('Accept favorites gallery listing pages. url: %s' % (url))
+        return True
+
+    # Accept journals By listing pages
+    if (
+        (not verdict) and
+        ('weasyl.com/journals' in url) and
+        ('weasyl.com/journals' in record_info['referrer'])
+        ):
+        print('Accept journals listing pages. url: %s' % (url))
+        return True
+
+    # Accept Followed By listing pages
+    if (
+        (not verdict) and
+        ('weasyl.com/followed' in url) and
+        ('weasyl.com/followed' in record_info['referrer'])
+        ):
+        print('Accept Followed By listing pages. url: %s' % (url))
+        return True
+
+    # Accept Following listing pages
+    if (
+        (not verdict) and
+        ('weasyl.com/following' in url) and
+        ('weasyl.com/following' in record_info['referrer'])
+        ):
+        print('Accept Following listing pages. url: %s' % (url))
+        return True
+
+    # Accept friends listing pages
+    if (
+        (not verdict) and
+        ('weasyl.com/friends' in url) and
+        ('weasyl.com/friends' in record_info['referrer'])
+        ):
+        print('Accept friends listing pages. url: %s' % (url))
+        return True
+
+    # Accept shouts listing pages
+    if (
+        (not verdict) and
+        ('weasyl.com/shouts' in url) and
+        ('weasyl.com/shouts' in record_info['referrer'])
+        ):
+        print('Accept shouts listing pages. url: %s' % (url))
+        return True
+
+    # Accept collections pages
+    if (
+        (not verdict) and
+        ('weasyl.com/collections' in url) and
+        ('weasyl.com/collections' in record_info['referrer'])
+        ):
+        print('Accept collections listing pages. url: %s' % (url))
+        return True
+
+
     #print('using defualt verdict. url: %s' % (url))
     return verdict
 

@@ -262,7 +262,21 @@ class WgetArgs(object):
                 wget_args.extend([
                     'https://www.weasyl.com/journal/{0}/'.format(num),
                 ])
-
+        elif item_type == 'user':
+            wget_args.remove("--wait=1")
+            wget_args.append("--wait=2")
+            wget_args.extend([
+                    'https://www.weasyl.com/collections?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/characters?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/favorites?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/friends?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/following?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/followed?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/journals?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/shouts?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/submissions?userid={0}'.format(item_value),
+                    'https://www.weasyl.com/user?userid={0}'.format(item_value),
+                ])
         else:
             raise Exception('Unknown item type.')
 
