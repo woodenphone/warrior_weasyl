@@ -21,7 +21,7 @@ from seesaw.tracker import PrepareStatsForTracker, GetItemFromTracker, \
 from seesaw.util import find_executable
 
 
-WEASYL_API_KEY = 'hJlNT9KELLhm6xvxFGUGy41FMCYcFXYnsdBKFFQGE5XA7kW9'
+WEASYL_API_KEY = 'hJlNT9KELLhm6xvxFGUGy41FMCYcFXYnsdBKFFQGE5XA7kW9'# TEMPORARY! REMOVEME!
 
 # check the seesaw version
 if StrictVersion(seesaw.__version__) < StrictVersion("0.8.3"):

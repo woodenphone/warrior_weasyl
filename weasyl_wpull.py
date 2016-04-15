@@ -51,6 +51,25 @@ def accept_url(url_info, record_info, verdict, reasons):
     if 'doubleclick.net/' in url:# Ads
         return False
 
+    # Reject weasyl things we don't want to load
+    if 'weasyl.com/search' in url:
+        return False
+    if 'weasyl.com/help' in url:
+        return False
+    if 'weasyl.com/notes' in url:
+        return False
+    if 'weasyl.com/frienduser' in url:
+        return False
+    if 'weasyl.com/policy' in url:
+        return False
+    if 'weasyl.com/ignoreuser' in url:
+        return False
+    if 'weasyl.com/submit' in url:
+        return False
+    if '' in url:
+        return False
+    if '' in url:
+        return False
 
     # Reject static site elements so we don't get a thousand copies of the title header image
     # https://cdn.weasyl.com/static/images/logo.png
@@ -130,6 +149,7 @@ def accept_url(url_info, record_info, verdict, reasons):
         print('Accept journals listing pages. url: %s' % (url))
         return True
 
+
     # Accept Followed By listing pages
     if (
         (not verdict) and
@@ -176,7 +196,7 @@ def accept_url(url_info, record_info, verdict, reasons):
         return True
 
 
-    #print('using defualt verdict. url: %s' % (url))
+    print('Using defualt verdict of %s for url: %s' % (verdict, url))
     return verdict
 
 
