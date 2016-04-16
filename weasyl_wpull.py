@@ -66,15 +66,50 @@ def accept_url(url_info, record_info, verdict, reasons):
         return False
     if 'weasyl.com/submit' in url:
         return False
-    if '' in url:
+    if 'weasyl.com/signout' in url:
         return False
-    if '' in url:
+    if 'weasyl.com/staff' in url:
         return False
+    if 'weasyl.com/control' in url:# https://www.weasyl.com/control
+        return False
+    if 'weasyl.com/followuser' in url:
+        return False
+    if 'weasyl.com/index' in url:
+        return False
+    if 'weasyl.com/thanks' in url:
+        return False
+    if 'weasyl.com/remove' in url:# https://www.weasyl.com/remove/comment
+        return False
+    if 'weasyl.com/favorite' in url:# https://www.weasyl.com/favorite
+        return False
+    if 'weasyl.com/static/images/' in url:# Site layout images, these can be grabbed seperately
+        return False
+    if 'weasyl.com/api/' in url:# 404 but somewhow gets linked to
+        return False
+
+    # Reject usepages other than ones we input through user:USERID mode
+    if (
+        ('weasyl.com/~' in url)
+        ):
+        return False
+    # Reject links to submissions (Hopefully this won't affect redirects to them)
+    if 'weasyl.com/submission/' in url:
+        return False
+
 
     # Reject static site elements so we don't get a thousand copies of the title header image
     # https://cdn.weasyl.com/static/images/logo.png
     if 'https://cdn.weasyl.com/static/images/' in url:
         return False
+
+    # Accept tag history links
+    #
+    if (
+        ('weasyl.com' in url) and
+        ('/tag-history/' in url)
+        ):
+        print('Accept tag history links. url: %s' % (url))
+        return True
 
     # Accept submission download links (This includes the download links for text submissions)
     # https://cdn.weasyl.com/~hattonslayden/submissions/1241567/af1c9582c794e97a166afc1a646d222645db57bbad3cb161f95c61e5e41a59ae/hattonslayden-intergalactic-vixen-around-the-bend.jpg?download
@@ -195,8 +230,8 @@ def accept_url(url_info, record_info, verdict, reasons):
         print('Accept collections listing pages. url: %s' % (url))
         return True
 
-
-    print('Using defualt verdict of %s for url: %s' % (verdict, url))
+    if verdict:
+        print('Using defualt verdict of %s for url: %s' % (verdict, url))
     return verdict
 
 

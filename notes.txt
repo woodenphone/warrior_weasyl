@@ -31,7 +31,9 @@ What we want to save:
             https://www.weasyl.com/submission/1199683/lippies-2016-book-1-draft
                 https://cdn.weasyl.com/static/media/37/6a/c2/376ac29cf432b843009c9bc18682fbef1db9282dbd77f4c311a598224b222807.jpg
                 https://cdn.weasyl.com/~tangenttheta/submissions/1199683/ddfaba99f29a47d53eec79a13ed9f6b9e116adac3d55d772e9b241365b55ce2d/tangenttheta-lippies-2016-book-1-draft.pdf?download
-    
+        Have a tag history page:
+            https://www.weasyl.com/submission/tag-history/1236068
+            https://www.weasyl.com/submission/tag-history/11062
     
     Characters
         site-provided: https://www.weasyl.com/character/61364/beanie
@@ -106,6 +108,15 @@ What we want to save:
             https://www.weasyl.com/journals/mouthrot
 
 What to avoid loading:
+    https://www.weasyl.com/signout?token=
+    https://www.weasyl.com/staff
+    weasyl.com/followuser
+    https://forums.weasyl.com/vbulletin/forum.php
+    https://forums.weasyl.com/
+    https://www.weasyl.com/control
+    https://www.weasyl.com/index
+    https://www.weasyl.com/thanks
+    https://www.weasyl.com/remove/comment
 
 
 
@@ -138,6 +149,7 @@ Site layout images:
 Known error pages:
     404:
         https://www.weasyl.com/foo?userid=5173
+        https://www.weasyl.com/api/characters/61381/
         "404! The page you requested could not be found."
     Unkown user:
         https://www.weasyl.com/favorites?userid=999
@@ -157,7 +169,8 @@ Known error pages:
 
 There is an API:
     "To connect to Weasyl using an API key, set the value of the X-Weasyl-API-Key HTTP header to the API key. This will override any cookie-based authentication."
-
+    A link to /api/ was encountered, but it was a 404
+    https://www.weasyl.com/api/characters/61381/
 
 
 
@@ -215,4 +228,4 @@ Generic small ranges for quick testing
 journal:104261-104271
 submission:1242072-1242082
 character:61354-61364
-
+user:15712
