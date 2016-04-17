@@ -22,6 +22,7 @@ WEASYL_RANGE = ITEM_NAME.split(':')[1]
 
 def accept_submission_page(url_info, record_info, verdict, reasons):
     """Determine whether to accept a submission page"""
+    url = url_info['url']
     assert('weasyl.com/submission/' in url)
     print('Processing submission page link. url: %s' % (url))
 
@@ -32,7 +33,7 @@ def accept_submission_page(url_info, record_info, verdict, reasons):
 
     # Reject links to submissions, unless they are linked to from the same submission or from the command line
     # ex "https://www.weasyl.com/submission/1221326" redirects to "https://www.weasyl.com/submission/1221326/two-big-cats"
-    referrer_submission_id = None
+    referrer_submission_id = 'DuMMy_Value because String comparison_needs_it'
     refferer_string = str(record_info['referrer'])
     referrer_submission_id_search = re.search('weasyl.com/submission/(\d+)', refferer_string)
     if referrer_submission_id_search:
@@ -51,6 +52,7 @@ def accept_submission_page(url_info, record_info, verdict, reasons):
 
 def accept_character_page(url_info, record_info, verdict, reasons):
     """Determine whether to accept a character page"""
+    url = url_info['url']
     assert('weasyl.com/character/' in url)
     print('Processing character page link. url: %s' % (url))
 
@@ -61,6 +63,7 @@ def accept_character_page(url_info, record_info, verdict, reasons):
 
 def accept_journal_page(url_info, record_info, verdict, reasons):
     """Determine whether to accept a journal page"""
+    url = url_info['url']
     assert('weasyl.com/journal/' in url)
     print('Processing journal page link. url: %s' % (url))
 
