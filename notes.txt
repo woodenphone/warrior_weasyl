@@ -5,6 +5,7 @@ What we want to save:
     Submissions
         Can be accessed from https://www.weasyl.com/submission/<SUBMISSION_ID>
         ex - https://www.weasyl.com/submission/1241567
+        Submission pages link to up to 2 adjacent submissions in the same gallery folder.
         download link:
             https://cdn.weasyl.com/~hattonslayden/submissions/1241567/af1c9582c794e97a166afc1a646d222645db57bbad3cb161f95c61e5e41a59ae/hattonslayden-intergalactic-vixen-around-the-bend.jpg?download
             https://cdn.weasyl.com/~inkstain/submissions/1241891/9952c65d3e5e2e32badc906a6b42bcfc8167d7c916c3f0ae281ea69ef9b811b3/inkstain-family-fur-computer-full-version.mp3?download
@@ -121,7 +122,9 @@ What to avoid loading:
 
 
 
-
+Scripts and stuff:
+    https://cdn.weasyl.com/static/pdf/viewer.css?288893e
+    https://cdn.weasyl.com/static/mediaplayer/jwplayer.js
 
 
 
@@ -229,3 +232,4 @@ journal:104261-104271
 submission:1242072-1242082
 character:61354-61364
 user:15712
+user:3058 # Has more than one page of favs
