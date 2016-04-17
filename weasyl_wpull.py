@@ -15,8 +15,44 @@ import re
 wpull_hook = globals().get('wpull_hook')  # silence code checkers
 
 
+item_name = os.environ['item_name']
+mode = item_name.split(':')[0]
+
+def accept_submission_page(url_info, record_info, verdict, reasons):
+    """Determine whether to accept a submission page"""
+    assert('weasyl.com/submission/' in url)
+    # Accept tag history links - https://www.weasyl.com/submission/tag-history/1236068
+    if ( ('weasyl.com' in url) and ('/tag-history/' in url) ):
+        print('Accept tag history links. url: %s' % (url))
+        return True
+
+    # Reject links to submissions, unless they are linked to from the same submission or from the command line
+    # ex "https://www.weasyl.com/submission/1221326" redirects to "https://www.weasyl.com/submission/1221326/two-big-cats"
+    referrer_submission_id = None
+    refferer_string = str(record_info['referrer'])
+    referrer_submission_id_search = re.search('weasyl.com/submission/(\d+)', refferer_string)
+    if referrer_submission_id_search:
+        referrer_submission_id = referrer_submission_id_search.group(1)
+    if (
+        ('weasyl.com/submission/' in url) and
+        (record_info['referrer'] is not None) and# Command-line specified submissions have referrer of None
+        (referrer_submission_id not in url)# If previously on a submission, this will be the submissionID of that submission
+        ):
+        print('Ignoring submission for url: %s with refferer of %s\r\n' % (url, record_info['referrer']))
+        return False
+    else:
+        print('Accept submission page. url: %s' % (url))
+        return True
 
 
+def accept_character_page(url_info, record_info, verdict, reasons):
+    """Determine whether to accept a character page"""
+    assert('weasyl.com/character/' in url)
+
+
+def accept_journal_page(url_info, record_info, verdict, reasons):
+    """Determine whether to accept a journal page"""
+    assert('weasyl.com/journal/' in url)
 
 
 def accept_url(url_info, record_info, verdict, reasons):
@@ -26,6 +62,28 @@ def accept_url(url_info, record_info, verdict, reasons):
     if record_info['referrer'] is None:
         print('Accept command-line specified URLs. url: %s \r\n' % (url))
         return True
+
+
+
+
+    if 'weasyl.com/submission/' in url:# Submission pages
+        return accept_submission_page(url_info, record_info, verdict, reasons)
+
+    if 'weasyl.com/character/' in url:# character pages
+        return accept_character_page(url_info, record_info, verdict, reasons)
+
+    if 'weasyl.com/journal/' in url:# journal pages
+        return accept_journal_page(url_info, record_info, verdict, reasons)
+
+
+    # Accept submission download links (This includes the download links for text submissions)
+    # https://cdn.weasyl.com/~hattonslayden/submissions/1241567/af1c9582c794e97a166afc1a646d222645db57bbad3cb161f95c61e5e41a59ae/hattonslayden-intergalactic-vixen-around-the-bend.jpg?download
+    if ( ('cdn.weasyl.com/~' in url) and ('/submissions/' in url) and (url.endswith('?download')) ):
+        print('Accept submission download links. url: %s' % (url))
+        return True
+
+
+
 
     # Rejections
     if verdict:
@@ -97,25 +155,11 @@ def accept_url(url_info, record_info, verdict, reasons):
 
         # Reject usepages other than ones we input through user:USERID mode
         if (
-            ('weasyl.com/~' in url)
+            ('weasyl.com/~' in url) and ('user?userid=' not in record_info['referrer'])
             ):
             return False
 
-        # Reject links to submissions, unless they are linked to from the same submission or from the command line
-        # ex "https://www.weasyl.com/submission/1221326" redirects to "https://www.weasyl.com/submission/1221326/two-big-cats"
-        referrer_submission_id = None
-        refferer_string = str(record_info['referrer'])
-        referrer_submission_id_search = re.search('weasyl.com/submission/(\d+)', refferer_string)
-        if referrer_submission_id_search:
-            referrer_submission_id = referrer_submission_id_search.group(1)
-        if (
-            ('weasyl.com/submission/' in url) and
-            (record_info['referrer'] is not None) and# Command-line specified submissions have referrer of None
-            (referrer_submission_id is not None) and# If not previously on a submission, this will be None
-            (referrer_submission_id not in url)# If previously on a submission, this will be the submissionID of that submission
-            ):
-            print('Ignoring submission for url: %s with refferer of %s\r\n' % (url, record_info['referrer']))
-            return False
+
 
         # Reject static site elements so we don't get a thousand copies of the title header image
         # https://cdn.weasyl.com/static/images/logo.png
@@ -132,44 +176,19 @@ def accept_url(url_info, record_info, verdict, reasons):
             return True
 
         # ===Submission, character, journal display pages===
-        # Accept tag history links
-        #
-        if (
-            ('weasyl.com' in url) and
-            ('/tag-history/' in url)
-            ):
-            print('Accept tag history links. url: %s' % (url))
-            return True
 
-        # Accept submission download links (This includes the download links for text submissions)
-        # https://cdn.weasyl.com/~hattonslayden/submissions/1241567/af1c9582c794e97a166afc1a646d222645db57bbad3cb161f95c61e5e41a59ae/hattonslayden-intergalactic-vixen-around-the-bend.jpg?download
-        if (
-            (not verdict) and
-            ('cdn.weasyl.com/~' in url) and
-            ('weasyl.com/submission/' in record_info['referrer']) and
-            (url.endswith('?download'))
-            ):
-            print('Accept submission download links. url: %s' % (url))
-            return True
+
+
 
         # Accept character download links
         # https://cdn.weasyl.com/static/character/4e/7a/2d/c2/35/e5/beaniee-61364.submit.41340.png
-        if (
-            (not verdict) and
-            ('cdn.weasyl.com/static/character' in url) and
-            ('weasyl.com/character/' in record_info['referrer']) and
-            ('.submit.' in url)
-            ):
+        if ( ('cdn.weasyl.com/static/character' in url) and ('weasyl.com/character/' in record_info['referrer']) ):
             print('Accept character download links. url: %s' % (url))
             return True
 
         # Accept text submission images and thumbnails. Restrict to submission pages to try to reduce bloat
         # https://cdn.weasyl.com/static/media/37/6a/c2/376ac29cf432b843009c9bc18682fbef1db9282dbd77f4c311a598224b222807.jpg
-        if (
-            (not verdict) and
-            ('cdn.weasyl.com/static/media' in url) and
-            ('weasyl.com/submission/' in record_info['referrer'])
-            ):
+        if ( ('cdn.weasyl.com/static/media' in url) and ('weasyl.com/submission/' in record_info['referrer']) ):
             print('Accept text submission images and thumbnails. url: %s' % (url))
             return True
 
@@ -180,54 +199,33 @@ def accept_url(url_info, record_info, verdict, reasons):
         # === USER ===
         # Accept Submission galleries pages
         # https://www.weasyl.com/submissions?userid=3058&folderid=4329
-        if (
-            (not verdict) and
-            ('weasyl.com/submissions' in url) and
-            ('weasyl.com/submissions' in record_info['referrer'])
-            ):
+        if ( ('weasyl.com/submissions' in url) and ('weasyl.com/submissions' in record_info['referrer']) ):
             print('Accept submissions gallery listing pages. url: %s' % (url))
             return True
 
         # Accept characters galleries pages
-        if (
-            (not verdict) and
-            ('weasyl.com/characters' in url) and
-            ('weasyl.com/characters' in record_info['referrer'])
-            ):
+        if ( ('weasyl.com/characters' in url) and ('weasyl.com/characters' in record_info['referrer']) ):
             print('Accept characters gallery listing pages. url: %s' % (url))
             return True
 
         # Accept favorites galleries pages
-        if (
-            (not verdict) and
-            ('weasyl.com/favorites' in url) and
-            ('weasyl.com/favorites' in record_info['referrer'])
-            ):
+        if ( ('weasyl.com/favorites' in url) and ('weasyl.com/favorites' in record_info['referrer']) ):
             print('Accept favorites gallery listing pages. url: %s' % (url))
             return True
 
-        # Accept journals By listing pages
-        if (
-            (not verdict) and
-            ('weasyl.com/journals' in url) and
-            ('weasyl.com/journals' in record_info['referrer'])
-            ):
+        # Accept journals listing pages
+        if ( ('weasyl.com/journals' in url) and ('weasyl.com/journals' in record_info['referrer']) ):
             print('Accept journals listing pages. url: %s' % (url))
             return True
 
 
         # Accept Followed By listing pages
-        if (
-            (not verdict) and
-            ('weasyl.com/followed' in url) and
-            ('weasyl.com/followed' in record_info['referrer'])
-            ):
+        if ( ('weasyl.com/followed' in url) and ('weasyl.com/followed' in record_info['referrer']) ):
             print('Accept Followed By listing pages. url: %s' % (url))
             return True
 
         # Accept Following listing pages
         if (
-            (not verdict) and
             ('weasyl.com/following' in url) and
             ('weasyl.com/following' in record_info['referrer'])
             ):
@@ -236,7 +234,6 @@ def accept_url(url_info, record_info, verdict, reasons):
 
         # Accept friends listing pages
         if (
-            (not verdict) and
             ('weasyl.com/friends' in url) and
             ('weasyl.com/friends' in record_info['referrer'])
             ):
@@ -245,7 +242,6 @@ def accept_url(url_info, record_info, verdict, reasons):
 
         # Accept shouts listing pages
         if (
-            (not verdict) and
             ('weasyl.com/shouts' in url) and
             ('weasyl.com/shouts' in record_info['referrer'])
             ):
@@ -254,7 +250,6 @@ def accept_url(url_info, record_info, verdict, reasons):
 
         # Accept collections pages
         if (
-            (not verdict) and
             ('weasyl.com/collections' in url) and
             ('weasyl.com/collections' in record_info['referrer'])
             ):
