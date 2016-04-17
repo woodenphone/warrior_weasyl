@@ -21,6 +21,10 @@ What we want to save:
             https://www.weasyl.com/submission/1148120/becoming-cat
                 https://cdn.weasyl.com/static/media/0d/ad/e3/0dade369fc65dc387170867f8b7c04b48cd4903457b4d094b3cb553fbf966b94.jpg
                 https://docs.google.com/document/d/1pSeP8GdGA7FMGv5sXk97NiBPkUPZwj8jNT_7MiHriWY/edit?usp=sharing
+            https://www.weasyl.com/submission/1110298/lifeline-dancing - publically visible
+                src="https://docs.google.com/document/d/1rOZ3MyixcC47IGXNOhnu4bQvpGtul8OCRYzGq-8Zyg8/edit?usp=sharing" class="content gdoc"
+
+
         
         Some text submissions have an image as well as text
             https://www.weasyl.com/submission/1220462/the-courage-to-grow-gold-in-disguise-17
@@ -35,6 +39,16 @@ What we want to save:
         Have a tag history page:
             https://www.weasyl.com/submission/tag-history/1236068
             https://www.weasyl.com/submission/tag-history/11062
+        Can be hosted offsite sometimes:
+            From submit pages:
+            Multimedia - Allowed: Bandcamp, Sketchfab, Soundcloud, Vimeo, Vine, YouTube
+            Literary - Allowed: Google Drive Documents
+            Visual - N/A
+            Character - N/A
+            Journal - N/A
+            Bandcamp, Sketchfab, Soundcloud, Vimeo, Vine, YouTube, Google Drive Documents
+
+
     
     Characters
         site-provided: https://www.weasyl.com/character/61364/beanie
