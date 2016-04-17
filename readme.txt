@@ -11,6 +11,10 @@ Don't make the ranges too big.
 Maybe around 100 or 1000 ids per job?
 Jobs are given through archiveteam tracker thingy
 
+Command to run:
+run-pipeline pipeline.py YOURNICKHERE
+
+
 Modes:
 submission:<LOW>-<HIGH>
 character:<LOW>-<HIGH>

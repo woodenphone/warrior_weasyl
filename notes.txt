@@ -63,6 +63,9 @@ What we want to save:
             Just one i grabbed at random from the front page
             https://www.weasyl.com/favorites?userid=72489&feature=submit
             https://www.weasyl.com/~lucheek
+        Has custom header image sometimes:
+            https://www.weasyl.com/~rubysnoot
+            https://cdn.weasyl.com/static/media/cd/3a/d5/cd3ad53f4dd059f81a9190881e07bf8e420d15941f1d535b81559aa2b6acf87c.png
         Collections:
             Do we care? They appear to be a single flat array of submission links
             https://www.weasyl.com/collections/keet
