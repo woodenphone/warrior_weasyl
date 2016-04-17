@@ -124,6 +124,13 @@ def accept_url(url_info, record_info, verdict, reasons):
 
     # Acceptions
     else:
+        # Accept thumbnails
+        # https://cdn.weasyl.com/static/media/3b/21/a1/3b21a1948998be341205950d97e154e8218ecbbb4e563353b80cdf278639e3c8.jpg
+        if (
+            ('weasyl.com/static/media/' in url)
+            ):
+            return True
+
         # ===Submission, character, journal display pages===
         # Accept tag history links
         #
@@ -254,14 +261,12 @@ def accept_url(url_info, record_info, verdict, reasons):
             print('Accept collections listing pages. url: %s' % (url))
             return True
 
-    ##    if verdict:
-    ##        print('Using defualt verdict of %s for url: %s' % (verdict, url))
-    ##    return verdict
-
-
     if verdict:
-        print('Ignoring defualt verdict of %s for url: %s with refferer of %s\r\n' % (verdict, url, record_info['referrer']))
-    return False
+        print('Using defualt verdict of %s for url: %s with record_info of %s' % (verdict, url, record_info))
+    return verdict
+##    if verdict:
+##        print('Ignoring defualt verdict of %s for url: %s with refferer of %s\r\n' % (verdict, url, record_info['referrer']))
+##    return False
 
 
 
