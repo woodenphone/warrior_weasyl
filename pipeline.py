@@ -332,8 +332,8 @@ pipeline = Pipeline(
 
     LimitConcurrent(
         NumberConfigValue(
-            min=1, max=6, default=globals().get("num_procs", "1"),
-            name="shared:fagrab:num_procs", title="Number of Processes",
+            min=1, max=1, default=globals().get("num_procs", "1"),
+            name="shared:weasylgrab:num_procs", title="Number of Processes",
             description="The maximum number of concurrent download processes."
         ),
         WgetDownload(
