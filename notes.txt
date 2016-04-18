@@ -13,7 +13,7 @@ What we want to save:
         
         Can be a youtube embed sometimes?
             https://www.weasyl.com/submission/1241596/foxx-peek
-        Can be a google docs embed
+        Can be a google docs embed.
         
         Some text submissions lack a download link:
             https://www.weasyl.com/submission/1221326/two-big-cats
@@ -23,9 +23,7 @@ What we want to save:
                 https://docs.google.com/document/d/1pSeP8GdGA7FMGv5sXk97NiBPkUPZwj8jNT_7MiHriWY/edit?usp=sharing
             https://www.weasyl.com/submission/1110298/lifeline-dancing - publically visible
                 src="https://docs.google.com/document/d/1rOZ3MyixcC47IGXNOhnu4bQvpGtul8OCRYzGq-8Zyg8/edit?usp=sharing" class="content gdoc"
-
-
-        
+       
         Some text submissions have an image as well as text
             https://www.weasyl.com/submission/1220462/the-courage-to-grow-gold-in-disguise-17
                 https://cdn.weasyl.com/static/media/85/b2/12/85b212c8332014e3531f0c4891434280f42c4b0d7237a9c1c5ed6e31d7f71ea0.png
@@ -36,9 +34,11 @@ What we want to save:
             https://www.weasyl.com/submission/1199683/lippies-2016-book-1-draft
                 https://cdn.weasyl.com/static/media/37/6a/c2/376ac29cf432b843009c9bc18682fbef1db9282dbd77f4c311a598224b222807.jpg
                 https://cdn.weasyl.com/~tangenttheta/submissions/1199683/ddfaba99f29a47d53eec79a13ed9f6b9e116adac3d55d772e9b241365b55ce2d/tangenttheta-lippies-2016-book-1-draft.pdf?download
+        
         Have a tag history page:
             https://www.weasyl.com/submission/tag-history/1236068
             https://www.weasyl.com/submission/tag-history/11062
+
         Can be hosted offsite sometimes:
             From submit pages:
             Multimedia - Allowed: Bandcamp, Sketchfab, Soundcloud, Vimeo, Vine, YouTube
