@@ -13,6 +13,9 @@ import requests
 import requests.exceptions
 import json
 import os
+import sys
+
+
 
 def claim_key(key_filepath, host_name):
     # Claim the new key

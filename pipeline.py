@@ -8,6 +8,7 @@ import socket
 import shutil
 import time
 import sys
+import json
 
 import seesaw
 from seesaw.config import realize, NumberConfigValue
@@ -152,6 +153,7 @@ class PrepareDirectories(SimpleTask):
         )
 
         open("%(item_dir)s/%(warc_file_base)s.warc.gz" % item, "w").close()
+        open("%(item_dir)s/api_key.json" % item, "w").close()
 
 
 class MoveFiles(SimpleTask):
@@ -194,7 +196,9 @@ def stats_id_function(item):
 
 class WgetArgs(object):
     def realize(self, item):
-        with open(ItemInterpolation("%(item_dir)s/api_key.json"), 'r') as f:
+        json_path = "%(item_dir)s/api_key.json" % item
+        print("API key path: %s" % (json_path))
+        with open(json_path, 'r') as f:
             file_raw = f.read()
         file_decoded = json.loads(file_raw)
         api_key = file_decoded['api_key']
