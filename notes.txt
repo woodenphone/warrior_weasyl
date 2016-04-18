@@ -229,7 +229,7 @@ To prepare a new account:
     Open link in confirmation email
 
     Open "Site preferences" https://www.weasyl.com/control/editpreferences
-    Set timezone to UTC+0 ?Atlantic/Reykjavik?
+    Set timezone to UTC+0 (ICELAND) ?Atlantic/Reykjavik?
     Set "Maximum Viewable Content Rating" to "Explicit"
     Set  "Maximum Viewable Content Rating in SFW Mode" to "Explicit"
     Click "Save"

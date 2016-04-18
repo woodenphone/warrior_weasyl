@@ -194,6 +194,11 @@ def stats_id_function(item):
 
 class WgetArgs(object):
     def realize(self, item):
+        with open(ItemInterpolation("%(item_dir)s/api_key.json"), 'r') as f:
+            file_raw = f.read()
+        file_decoded = json.loads(file_raw)
+        api_key = file_decoded['api_key']
+
         wget_args = [
             WPULL_EXE,
             "-nv",
@@ -220,7 +225,8 @@ class WgetArgs(object):
             "--warc-header", "operator: Archive Team",
             "--warc-header", "weasyl-dld-script-version: " + VERSION,
             "--warc-header", ItemInterpolation("weasyl-user: %(item_name)s"),
-            "--header", "X-Weasyl-API-Key: "+WEASYL_API_KEY# TEMPORARY! REMOVEME!
+            "--header", "X-Weasyl-API-Key: "+api_key
+##            "--header", "X-Weasyl-API-Key: "+WEASYL_API_KEY# TEMPORARY! REMOVEME!
         ]
 
         item_type, item_value = item['item_name'].split(':', 1)
@@ -309,17 +315,17 @@ pipeline = Pipeline(
     GetItemFromTracker("http://%s/%s" % (TRACKER_HOST, TRACKER_ID), downloader,
                        VERSION),
     PrepareDirectories(warc_prefix="weasyl"),
-##    ExternalProcess(
-##        'Begin',
-##        [sys.executable, 'helper.py', 'begin'],
-##        env={
-##            'user_agent': user_agent,
-##            'bind_address': globals().get('bind_address', ''),
-##            'disco_tracker': DISCO_TRACKER_URL,
-##            "item_dir": ItemValue("item_dir"),
-##        },
-##        accept_on_exit_code=[0],
-##    ),
+
+    ExternalProcess(
+        'Claim API key',
+        [sys.executable, 'helper.py', 'claim'],
+        env={
+            'disco_tracker': DISCO_TRACKER_URL,
+            "item_dir": ItemValue("item_dir"),
+        },
+        accept_on_exit_code=[0],
+    ),
+
     LimitConcurrent(
         NumberConfigValue(
             min=1, max=6, default=globals().get("num_procs", "1"),
@@ -337,17 +343,17 @@ pipeline = Pipeline(
             }
         ),
     ),
-##    ExternalProcess(
-##        'End',
-##        [sys.executable, 'helper.py', 'end'],
-##        env={
-##            'user_agent': user_agent,
-##            'bind_address': globals().get('bind_address', ''),
-##            'disco_tracker': DISCO_TRACKER_URL,
-##            "item_dir": ItemValue("item_dir"),
-##        },
-##        accept_on_exit_code=[0],
-##    ),
+
+    ExternalProcess(
+        'Claim API key',
+        [sys.executable, 'helper.py', 'release'],
+        env={
+            'disco_tracker': DISCO_TRACKER_URL,
+            "item_dir": ItemValue("item_dir"),
+        },
+        accept_on_exit_code=[0],
+    ),
+
     PrepareStatsForTracker(
         defaults={"downloader": downloader, "version": VERSION},
         file_groups={
