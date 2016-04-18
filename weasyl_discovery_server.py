@@ -25,40 +25,48 @@ from flask import abort
 app = Flask(__name__)
 
 
-
-
-
-@app.route('/')
-def hello():
-    """Ensure server works"""
-    return 'Furaffinity disco server running.\r\n'
-
-
 @app.route('/debug')
 def debug():
     """Ensure server works"""
     raise Exception
 
 
-@app.route('/_weasyl_disco/api/get_secrets', methods = ["POST", "GET"])
-def serve_weasyl_logins():
-    """Serve FA passwords"""
+@app.route('/_weasyl_disco/api/v1.0/allocate_key', methods = ["GET"])
+def allocate_key():
+    """Allocate a Weasyl API key"""
     global WEASYL_LOGIN_DETAILS# I don't know why but we need this here
-    # Get a username/password pair
+    # Get a API key
     # Sort the list by last used
     WEASYL_LOGIN_DETAILS = sorted(WEASYL_LOGIN_DETAILS, key=lambda k: k['last_used'])# http://stackoverflow.com/questions/72899/how-do-i-sort-a-list-of-dictionaries-by-values-of-the-dictionary-in-python
-    account = WEASYL_LOGIN_DETAILS[0]
-    account['last_used'] = time.time()
-    # TODO: Disable sending out a username for x time after it was last used
-    # Encode the login details
-    login_data = {
-        'api_key':account['api_key'],
-        }
+    for account in WEASYL_LOGIN_DETAILS:
+        if not account['allocated']:
+            account['last_used'] = time.time()
+            account['allocated'] = True
+            api_key = account['api_key']
+            print("Key allocated: %s" % (api_key))
+            login_data = {'api_key':api_key, 'success':True}
+            json_to_send = json.dumps(login_data)
+            return json_to_send
+    print('Cannot allocate key.')
+    return json.dumps({'success':False})
 
-    json_to_send = json.dumps(login_data)
-    return json_to_send
 
+@app.route('/_weasyl_disco/api/v1.0/deallocate_key', methods = ["POST"])
+def deallocate_key():
+    """Deallocate a Weasyl API key"""
+    global WEASYL_LOGIN_DETAILS# I don't know why but we need this here
+    if not request.json or not 'api_key' in request.json:
+        print('Recieved bad request trying to deallocate key.')
+        print(request)
+        abort(400)
+    api_key = request.json['api_key']
 
+    for account in WEASYL_LOGIN_DETAILS:
+        if account['api_key'] == api_key:
+            account['allocated'] = False
+            print("Key Deallocated: %s" % (api_key))
+            return json.dumps({'success':True})
+    return json.dumps({'success':False})
 
 
 def main():
