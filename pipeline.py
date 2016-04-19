@@ -202,6 +202,7 @@ class WgetArgs(object):
             file_raw = f.read()
         file_decoded = json.loads(file_raw)
         api_key = file_decoded['api_key']
+        print("WgetArgs api_key: %s" % (api_key))
 
         wget_args = [
             WPULL_EXE,

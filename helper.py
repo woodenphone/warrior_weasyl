@@ -28,6 +28,7 @@ def claim_key(key_filepath, host_name):
     # Save it to a file
     with open(key_filepath, 'w') as f:
         f.write(json.dumps({'api_key':api_key}))
+    print("claim_key api_key: %s" % (api_key))
     return api_key
 
 
@@ -62,10 +63,10 @@ def main():
     key_filepath = os.path.join(item_dir, 'api_key.json')
 
     if command == 'claim':
-        claim_key(key_filepath='api_key.json', host_name=disco_tracker)
+        claim_key(key_filepath=key_filepath, host_name=disco_tracker)
 
     elif command == 'release':
-        release_key(key_filepath='api_key.json', host_name=disco_tracker)
+        release_key(key_filepath=key_filepath, host_name=disco_tracker)
 
     else:
         raise Exception('Unknown command.')
