@@ -192,72 +192,72 @@ def accept_url(url_info, record_info, verdict, reasons):
         print('Accept submission download links. url: %s' % (url))
         return True
 
-##    # Rejections
-##    # Reject unwanted domains
-##    if 'google-analytics.com' in url:
-##        return False
-##    if 'google.com/analytics' in url:
-##        return False
-##    if 'gstatic.com/analytics' in url:
-##        return False
-##    if 'googleadservices.com' in url:
-##        return False
-##    if 'googlesyndication.com/pagead/' in url:
-##        return False
-##    if 'googletagservices.com' in url:
-##        return False
-##    if '2mdn.net' in url:
-##        return False
-##    if 'ytimg.com' in url:
-##        return False
-##    if 'google.com/images' in url:
-##        return False
-##    if 'gstatic.com/' in url:
-##        return False
-##    if 'fonts.gstatic.com/' in url:# Maybe we need this?
-##        return False
-##    if 'ajax.googleapis.com/' in url:# Maybe we need this?
-##        return False
-##    if 'doubleclick.net/' in url:# Ads
-##        return False
-##
-##    # Reject weasyl things we don't want to load
-##    if 'weasyl.com/search' in url:
-##        return False
-##    if 'weasyl.com/help' in url:
-##        return False
-##    if 'weasyl.com/notes' in url:
-##        return False
-##    if 'weasyl.com/frienduser' in url:
-##        return False
-##    if 'weasyl.com/policy' in url:
-##        return False
-##    if 'weasyl.com/ignoreuser' in url:
-##        return False
-##    if 'weasyl.com/submit' in url:
-##        return False
-##    if 'weasyl.com/signout' in url:
-##        return False
-##    if 'weasyl.com/staff' in url:
-##        return False
-##    if 'weasyl.com/control' in url:# https://www.weasyl.com/control
-##        return False
-##    if 'weasyl.com/followuser' in url:
-##        return False
-##    if 'weasyl.com/index' in url:
-##        return False
-##    if 'weasyl.com/thanks' in url:
-##        return False
-##    if 'weasyl.com/remove' in url:# https://www.weasyl.com/remove/comment
-##        return False
-##    if 'weasyl.com/favorite' in url:# https://www.weasyl.com/favorite
-##        return False
-##    if 'weasyl.com/static/images/' in url:# Site layout images, these can be grabbed seperately
-##        return False
-##    if 'weasyl.com/api/' in url:# 404 but somewhow gets linked to
-##        return False
-##    if url.endswith('weasyl.com'):
-##        return False
+    # Rejections
+    # Reject unwanted domains
+    if 'google-analytics.com' in url:
+        return False
+    if 'google.com/analytics' in url:
+        return False
+    if 'gstatic.com/analytics' in url:
+        return False
+    if 'googleadservices.com' in url:
+        return False
+    if 'googlesyndication.com/pagead/' in url:
+        return False
+    if 'googletagservices.com' in url:
+        return False
+    if '2mdn.net' in url:
+        return False
+    if 'ytimg.com' in url:
+        return False
+    if 'google.com/images' in url:
+        return False
+    if 'gstatic.com/' in url:
+        return False
+    if 'fonts.gstatic.com/' in url:# Maybe we need this?
+        return False
+    if 'ajax.googleapis.com/' in url:# Maybe we need this?
+        return False
+    if 'doubleclick.net/' in url:# Ads
+        return False
+
+    # Reject weasyl things we don't want to load
+    if 'weasyl.com/search' in url:
+        return False
+    if 'weasyl.com/help' in url:
+        return False
+    if 'weasyl.com/notes' in url:
+        return False
+    if 'weasyl.com/frienduser' in url:
+        return False
+    if 'weasyl.com/policy' in url:
+        return False
+    if 'weasyl.com/ignoreuser' in url:
+        return False
+    if 'weasyl.com/submit' in url:
+        return False
+    if 'weasyl.com/signout' in url:
+        return False
+    if 'weasyl.com/staff' in url:
+        return False
+    if 'weasyl.com/control' in url:# https://www.weasyl.com/control
+        return False
+    if 'weasyl.com/followuser' in url:
+        return False
+    if 'weasyl.com/index' in url:
+        return False
+    if 'weasyl.com/thanks' in url:
+        return False
+    if 'weasyl.com/remove' in url:# https://www.weasyl.com/remove/comment
+        return False
+    if 'weasyl.com/favorite' in url:# https://www.weasyl.com/favorite
+        return False
+    if 'weasyl.com/static/images/' in url:# Site layout images, these can be grabbed seperately
+        return False
+    if 'weasyl.com/api/' in url:# 404 but somewhow gets linked to
+        return False
+    if url.endswith('weasyl.com'):
+        return False
 
     # Reject static site elements so we don't get a thousand copies of the title header image
     # https://cdn.weasyl.com/static/images/logo.png
@@ -302,6 +302,9 @@ def accept_url(url_info, record_info, verdict, reasons):
 
 
 
+def get_urls(filename, url_info, document_info):
+    """Return additional URLs to be added to the URL Table."""
+    return urls
 
 
 
@@ -312,7 +315,6 @@ def accept_url(url_info, record_info, verdict, reasons):
 
 
 
-
-
+wpull_hook.callbacks.get_urls = get_urls
 wpull_hook.callbacks.accept_url = accept_url
 wpull_hook.callbacks.version = 3
